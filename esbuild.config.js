@@ -1,10 +1,10 @@
 import esbuild from 'esbuild'
 
 esbuild.build({
-    entryPoints: ['index.ts'],
+    entryPoints: ['data-copy.ts'],
     bundle: true,
     format: 'esm',
-    outfile: 'dist/index.js',
+    outfile: 'dist/data-copy.js',
     minify: process.env.NODE_ENV === 'production',
     sourcemap: true,
     target: 'es2021',

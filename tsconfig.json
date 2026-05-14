@@ -18,6 +18,6 @@
       "@utils/*": ["./node_modules/datastar/library/src/utils/*"]
     }
   },
-  "include": ["index.ts"],
+  "include": ["data-copy.ts"],
   "exclude": ["node_modules", "dist"]
 }

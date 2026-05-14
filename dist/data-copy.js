@@ -1,2 +1,2 @@
 typeof window<"u"&&(async()=>{try{let t=await import("datastar");t?.attribute&&u(t.attribute)}catch{}})();function u(t){t({name:"copy",requirement:{value:"must"},apply({el:e,value:n}){let i,a=e.textContent,r=()=>{if(i&&clearTimeout(i),e.textContent="\u2714 Copied",i=setTimeout(()=>{e.textContent=a},2e3),!n)return;let o=document.querySelector(n);if(!o)return;let c=o.textContent??"";navigator.clipboard.writeText(c)};return e.addEventListener("click",r),()=>{e.removeEventListener("click",r),i&&clearTimeout(i)}}})}export{u as default};
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=data-copy.js.map
