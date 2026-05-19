@@ -23,31 +23,25 @@ export default function copyPlugin(attribute: (plugin: AttributePlugin) => void)
         },
         apply({ el, value }) {
             let timeoutId: ReturnType<typeof setTimeout> | undefined;
-            let originalText = el.textContent;
 
             // function to handle click event
             const handleClick = () => {
-                if (timeoutId) {
-                    clearTimeout(timeoutId);
-                }
-
-                el.textContent = '\u2714 Copied'
-
-                timeoutId = setTimeout(() => {
-                    el.textContent = originalText
-                }, 2000)
-
-                if (!value) {
-                    return;
-                }
                 // Find the source element via the selector
-                const source = document.querySelector(value);
+                const source = document.querySelector(value as string);
                 if (!source) {
                     return;
                 }
-
                 const text = source.textContent ?? '';
-                navigator.clipboard.writeText(text)
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = el.textContent
+                    if (timeoutId) {
+                        clearTimeout(timeoutId)
+                    }
+                    el.textContent = '\u2714 Copied'
+                    timeoutId = setTimeout(() => {
+                        el.textContent = originalText
+                    }, 2000)
+                })
             }
 
             el.addEventListener('click', handleClick);
